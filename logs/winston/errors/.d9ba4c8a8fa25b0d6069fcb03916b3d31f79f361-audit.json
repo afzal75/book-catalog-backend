@@ -44,6 +44,16 @@
             "date": 1693810974366,
             "name": "C:\\Users\\afzal\\Assignment\\book-catalog-backend\\logs\\winston\\errors\\phu-2023-04-09-13-error.log",
             "hash": "da610c5aa956b94cf0f05c9a88b392bd169db65e26c5cba52d6788d0d74a39b8"
+        },
+        {
+            "date": 1693835349898,
+            "name": "C:\\Users\\afzal\\Assignment\\book-catalog-backend\\logs\\winston\\errors\\phu-2023-04-09-19-error.log",
+            "hash": "d0044176266909ba436a654a875e79e44bccdd74fdf25cc6ede7708ae7bae1f1"
+        },
+        {
+            "date": 1693836614428,
+            "name": "C:\\Users\\afzal\\Assignment\\book-catalog-backend\\logs\\winston\\errors\\phu-2023-04-09-20-error.log",
+            "hash": "953a76c7a9ac7643f192448ce1c762d8c33c5018c1bcd868fd59a96deac7805b"
         }
     ],
     "hashType": "sha256"

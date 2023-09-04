@@ -44,6 +44,16 @@
             "date": 1693810974359,
             "name": "C:\\Users\\afzal\\Assignment\\book-catalog-backend\\logs\\winston\\successes\\phu-2023-04-09-13-success.log",
             "hash": "846c92976717f96c7169b1f7e0bdacc87112e862a28fa38194d816c641746889"
+        },
+        {
+            "date": 1693835349879,
+            "name": "C:\\Users\\afzal\\Assignment\\book-catalog-backend\\logs\\winston\\successes\\phu-2023-04-09-19-success.log",
+            "hash": "e11dbc4f8545995ab907282682e1249c31294f8fe24dabdef82501345842e665"
+        },
+        {
+            "date": 1693836614421,
+            "name": "C:\\Users\\afzal\\Assignment\\book-catalog-backend\\logs\\winston\\successes\\phu-2023-04-09-20-success.log",
+            "hash": "e311cd32933b2bfbf6ac213d3ba6a58ca825d9b5e5c5f9c8e383978b42d99ab9"
         }
     ],
     "hashType": "sha256"
