@@ -4,5 +4,6 @@ const router = express.Router();
 
 router.post('/create-book', BookController.createBook)
 router.get('/', BookController.getAllBooks)
+router.get('/:id', BookController.getSingleBook)
 
 export const BookRoutes = router;
