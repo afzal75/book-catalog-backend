@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Book, Prisma } from '@prisma/client';
 import { paginationHelpers } from '../../../helpers/paginationHelper';
@@ -118,6 +119,41 @@ const getAllBooks = async (
   };
 };
 
+const bookCategoryId = async (
+  paginationOptions: IPaginationOptions,
+  categoryId: string
+) => {
+  const { size, page, skip } =
+    paginationHelpers.calculatePagination(paginationOptions);
+
+  const result = await prisma.book.findMany({
+    where: { categoryId },
+    skip,
+    take: size,
+    orderBy:
+      paginationOptions.sortBy && paginationOptions.sortOrder
+        ? { [paginationOptions.sortBy]: paginationOptions.sortOrder }
+        : {
+            title: 'desc',
+          },
+  });
+  const total = await prisma.book.count({
+    where: { categoryId },
+  });
+
+  const totalPage = Math.ceil(total / size);
+
+  return {
+    meta: {
+      total,
+      page,
+      size,
+      totalPage,
+    },
+    data: result,
+  };
+};
+
 const getSingleBook = async (id: string) => {
   const result = await prisma.book.findUnique({
     where: {
@@ -133,5 +169,6 @@ const getSingleBook = async (id: string) => {
 export const BookService = {
   createBook,
   getAllBooks,
+  bookCategoryId,
   getSingleBook,
 };
