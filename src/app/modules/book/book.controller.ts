@@ -32,26 +32,25 @@ const getAllBooks = catchAsync(async (req: Request, res: Response) => {
 });
 
 const bookCategoryId = catchAsync(async (req: Request, res: Response) => {
-    const { categoryId } = req.params;
-    const paginationOptions = pick(req.query, [
-      'size',
-      'page',
-      'sortBy',
-      'sortOrder',
-    ]);
-    const result = await BookService.bookCategoryId(
-      paginationOptions,
-      categoryId
-    );
-    sendResponse(res, {
-      statusCode: httpStatus.OK,
-      success: true,
-      message: 'Books with associated category data fetched successfully',
-      meta: result.meta,
-      data: result.data,
-    });
+  const { categoryId } = req.params;
+  const paginationOptions = pick(req.query, [
+    'size',
+    'page',
+    'sortBy',
+    'sortOrder',
+  ]);
+  const result = await BookService.bookCategoryId(
+    paginationOptions,
+    categoryId
+  );
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Books with associated category data fetched successfully',
+    meta: result.meta,
+    data: result.data,
   });
-  
+});
 
 const getSingleBook = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
@@ -64,9 +63,21 @@ const getSingleBook = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const updateBook = catchAsync(async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const result = await BookService.updateBook(id, req.body);
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Book updated successfully',
+      data: result,
+    });
+  });
+
 export const BookController = {
   createBook,
   getAllBooks,
   getSingleBook,
-  bookCategoryId
+  bookCategoryId,
+  updateBook,
 };
