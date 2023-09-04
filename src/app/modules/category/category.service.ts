@@ -4,12 +4,19 @@ import prisma from '../../../shared/prisma';
 const createCategory = async (data: Category): Promise<Category> => {
   const result = await prisma.category.create({
     data,
+    include: {
+      books: true,
+    },
   });
   return result;
 };
 
-const getAllCategory = async () => {
-  const result = await prisma.category.findMany();
+const getAllCategory = async (): Promise<Category[]> => {
+  const result = await prisma.category.findMany({
+    include: {
+      books: true,
+    },
+  });
   return result;
 };
 
@@ -18,6 +25,9 @@ const getSignleCategory = async (id: string): Promise<Category | null> => {
     where: {
       id,
     },
+    include:{
+        books :true ,
+    }
   });
   return result;
 };
