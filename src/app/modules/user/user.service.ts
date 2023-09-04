@@ -35,7 +35,27 @@ const getSingleUser = async (id: string): Promise<Partial<User | null>> => {
   return result;
 };
 
+const updateUser = async (id: string, payload: Partial<User>): Promise<Partial<User>> => {
+  const result = await prisma.user.update({
+    where: {
+      id,
+    },
+    data: payload,
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      role: true,
+      contactNo: true,
+      address: true,
+      profileImg: true,
+    },
+  });
+  return result;
+};
+
 export const UserService = {
   getAllUser,
-  getSingleUser
+  getSingleUser,
+  updateUser
 };
