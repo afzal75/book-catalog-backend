@@ -53,7 +53,41 @@ const getAllOrder = async (user: any) => {
   }
 };
 
+const getSingleOrder = async (user: any, orderId: string) => {
+  const { userId, role } = user;
+
+  const isUserExist = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+  });
+
+  if (!isUserExist) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'User Not Found');
+  }
+
+  if (role === 'admin') {
+    const result = await prisma.order.findUnique({
+      where: {
+        id: orderId,
+      },
+    });
+    return result;
+  }
+
+  if (role === 'customer') {
+    const result = await prisma.order.findUnique({
+      where: {
+        id: orderId,
+        userId,
+      },
+    });
+    return result;
+  }
+};
+
 export const OrderService = {
   createOrder,
   getAllOrder,
+  getSingleOrder
 };
